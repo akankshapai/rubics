@@ -359,3 +359,41 @@ def turn_B_prime(cube) :
     cube[3][8] = temp[2]
 
     return cube
+
+def find_edge(cube, color1, color2) :
+
+    edge_pairs = [
+        # Top layer
+        ((0, 7), (2, 1)), # Up-Bottom + Front-Top
+        ((0, 3), (1, 1)), # Up-Left + Left-Top
+        ((0, 1), (4, 1)), # Up-Top + Back-Top
+        ((0, 5), (3, 1)), # Up-Right + Right-Top
+
+        # Middle Layer
+        ((2, 3), (1, 5)), # Front-Left + Left-Right
+        ((1, 3), (4, 5)), # Left-Left + Back-Right
+        ((4, 3), (3, 5)), # Back-Left + Right-Right
+        ((3, 3), (2, 5)), # Right-Left + Front-Right
+
+        # Bottom Layer
+        ((2, 7), (5, 1)), # Front-Bottom + Down-Top
+        ((1, 7), (5, 3)), # Left-Bottom + Down-Left
+        ((4, 7), (5, 7)), # Back-Bottom + Down-Bottom
+        ((3, 7), (5, 5))  # Right-Bottom + Down-Right
+    ]
+
+    for pair in edge_pairs:
+        # Co-ords
+        (f1, i1) = pair[0]
+        (f2, i2) = pair[1]
+
+        # Colors
+        c1 = cube[f1][c1]
+        c2 = cube[f2][c2]
+
+        if c1 == color1 and c2 == color2:
+            return (f1, i1) # Edge Found, Location of color1 Returned
+        elif c1 == color2 and c2 == color1:
+            return (f2, i2) # Flipped Edge Found, Location of color1 Returned
+    
+    return None # Not Found
