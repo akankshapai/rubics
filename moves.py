@@ -388,8 +388,8 @@ def find_edge(cube, color1, color2) :
         (f2, i2) = pair[1]
 
         # Colors
-        c1 = cube[f1][c1]
-        c2 = cube[f2][c2]
+        c1 = cube[f1][i1]
+        c2 = cube[f2][i2]
 
         if c1 == color1 and c2 == color2:
             return (f1, i1) # Edge Found, Location of color1 Returned
