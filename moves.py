@@ -16,7 +16,7 @@ def turn_R(cube) :
 
     cube[3] = rotate_face_clockwise(cube[3]) # Right face rotated
     
-    # Temp storage of Top face
+    # Temp storage of Top face column
     temp = [cube[0][2], cube[0][5], cube[0][8]]
 
     # Front to Top
@@ -45,7 +45,7 @@ def turn_R_prime(cube) :
 
     cube[3] = rotate_face_anticlockwise(cube[3]) # Right face rotated
 
-    # Temp storage of Top face
+    # Temp storage of Top face column
     temp = [cube[0][2], cube[0][5], cube[0][8]]
 
     # Back to Top
@@ -67,5 +67,63 @@ def turn_R_prime(cube) :
     cube[2][2] = temp[0]
     cube[2][5] = temp[1]
     cube[2][8] = temp[2]
+
+    return cube
+
+def turn_U(cube) :
+
+    cube[0] = rotate_face_clockwise(cube[0]) # Top face rotated
+
+    # Temp storage of Front face row
+    temp = [cube[2][0], cube[2][1], cube[2][2]]
+
+    # Right to Front
+    cube[2][0] = cube[3][0]
+    cube[2][1] = cube[3][1]
+    cube[2][2] = cube[3][2]
+
+    # Back to Right
+    cube[3][0] = cube[4][0]
+    cube[3][1] = cube[4][1]
+    cube[3][2] = cube[4][2]
+
+    # Left to Back
+    cube[4][0] = cube[1][0]
+    cube[4][1] = cube[1][1]
+    cube[4][2] = cube[1][2]
+
+    # Front to Left
+    cube[1][0] = temp[0]
+    cube[1][1] = temp[1]
+    cube[1][2] = temp[2]
+
+    return cube
+
+def turn_U_prime(cube) :
+
+    cube[0] = rotate_face_anticlockwise(cube[0]) # Top face rotated
+
+    # Temp storage of Front face row
+    temp = [cube[2][0], cube[2][1], cube[2][2]]
+    
+    # Left to Front
+    cube[2][0] = cube[1][0]
+    cube[2][1] = cube[1][1]
+    cube[2][2] = cube[1][2]
+
+    # Back to Left
+    cube[1][0] = cube[4][0]
+    cube[1][1] = cube[4][1]
+    cube[1][2] = cube[4][2]
+
+    # Right to Back
+    cube[4][0] = cube[3][0]
+    cube[4][1] = cube[3][1]
+    cube[4][2] = cube[3][2]
+
+    # Front to Right
+    cube[3][0] = temp[0]
+    cube[3][1] = temp[1]
+    cube[3][2] = temp[2]
 
     return cube
