@@ -397,3 +397,35 @@ def find_edge(cube, color1, color2) :
             return (f2, i2) # Flipped Edge Found, Location of color1 Returned
     
     return None # Not Found
+
+def find_corner(cube, color1, color2, color3):
+    
+    corner_triplets = [
+        # Top Layer
+        ((2, 0), (1, 2), (0, 6)), # Front, Left, Top
+        ((1, 0), (4, 2), (0, 0)), # Left, Back, Top
+        ((4, 0), (3, 2), (0, 2)), # Back, Right, Top
+        ((3, 0), (2, 2), (0, 8)), # Right, Front, Top
+
+        # Bottom Layer
+        ((2, 6), (1, 8), (5, 0)), # Front, Left, Down
+        ((1, 6), (4, 8), (5, 6)), # Left, Back, Down
+        ((4, 6), (3, 8), (5, 8)), # Back, Right, Down
+        ((3, 6), (2, 8), (5, 2))  # Right, Front, Down
+    ]
+
+    target = {color1, color2, color3}
+    for triplet in corner_triplets:
+        # Co-ords
+        (f1, i1) = triplet[0]
+        (f2, i2) = triplet[1]
+        (f3, i3) = triplet[2]
+
+        cur_color = {cube[f1][i1], cube[f2][i2], cube[f3][i3]}
+
+        if cur_color == target:
+            if cube[f1][i1] == color1: return (f1, i1)
+            if cube[f2][i2] == color1: return (f2, i2)
+            if cube[f3][i3] == color1: return (f3, i3)
+
+    return None
