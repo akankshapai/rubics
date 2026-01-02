@@ -185,3 +185,62 @@ def turn_L_prime(cube) :
     cube[0][6] = temp[2]
 
     return cube
+
+def turn_D(cube) :
+
+    cube[5] = rotate_face_clockwise(cube[5]) # Down face rotated
+
+    #Temp storage of Front face row
+    temp = [cube[2][6], cube[2][7], cube[2][8]]
+
+    # Left to Front
+    cube[2][6] = cube[1][6]
+    cube[2][7] = cube[1][7]
+    cube[2][8] = cube[1][8]
+
+    # Back to Left
+    cube[1][6] = cube[4][6]
+    cube[1][7] = cube[4][7]
+    cube[1][8] = cube[4][8]
+
+    # Right to Back
+    cube[4][6] = cube[3][6]
+    cube[4][7] = cube[3][7]
+    cube[4][8] = cube[3][8]
+
+    # Front to Right
+    cube[3][6] = temp[0]
+    cube[3][7] = temp[1]
+    cube[3][8] = temp[2]
+
+    return cube
+
+def turn_D_prime(cube) :
+
+    cube[5] = rotate_face_anticlockwise(cube[5]) # Down face rotated
+
+    #Temp storage of Front face row
+    temp = [cube[2][6], cube[2][7], cube[2][8]]
+
+    # Right to Front
+    cube[2][6] = cube[3][6]
+    cube[2][7] = cube[3][7]
+    cube[2][8] = cube[3][8]
+
+    # Back to Right
+    cube[3][6] = cube[4][6]
+    cube[3][7] = cube[4][7]
+    cube[3][8] = cube[4][8]
+
+    # Left to Back
+    cube[4][6] = cube[1][6]
+    cube[4][7] = cube[1][7]
+    cube[4][8] = cube[1][8]
+
+    # Front to Left
+    cube[1][6] = temp[0]
+    cube[1][7] = temp[1]
+    cube[1][8] = temp[2]
+
+    return cube
+ 
