@@ -2,6 +2,7 @@ from ursina import *
 import moves
 
 app = Ursina()
+window.color = color.black
 EditorCamera()  # Allows rotation with right-click drag
 camera.world_position = (0, 0, -10)
 camera.look_at((0,0,0))
