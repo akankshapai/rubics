@@ -1,3 +1,5 @@
+import random
+
 def init_cube():
     return [
         ['W'] * 9,  
@@ -7,6 +9,31 @@ def init_cube():
         ['B'] * 9,  
         ['Y'] * 9   
     ]
+
+def scramble(cube, num_moves=20):
+
+    sequence = [] # To store moves
+
+    move_map = {
+        'R': turn_R,  "R'": turn_R_prime,
+        'L': turn_L,  "L'": turn_L_prime,
+        'U': turn_U,  "U'": turn_U_prime,
+        'D': turn_D,  "D'": turn_D_prime,
+        'F': turn_F,  "F'": turn_F_prime,
+        'B': turn_B,  "B'": turn_B_prime,
+    }
+
+    move_list = list(move_map.keys()) # List of possible moves
+
+    for _ in range(num_moves):
+        move = random.choice(move_list) # Random move
+        action_function = move_map[move]
+        action_function(cube)
+        sequence.append(move)
+
+    scramble_seq = ' '.join(sequence)
+    print(f"Scramble sequence: {scramble_seq}")
+    return scramble_seq
 
 def rotate_face_clockwise(face_arr):
     return [
