@@ -1,3 +1,13 @@
+def init_cube():
+    return [
+        ['W'] * 9,  
+        ['O'] * 9,  
+        ['G'] * 9,  
+        ['R'] * 9,  
+        ['B'] * 9,  
+        ['Y'] * 9   
+    ]
+
 def rotate_face_clockwise(face_arr):
     return [
         face_arr[6], face_arr[3], face_arr[0], # 1st row

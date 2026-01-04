@@ -1,13 +1,5 @@
 import moves
-def init_cube():
-    return [
-        ['W'] * 9,  
-        ['O'] * 9,  
-        ['G'] * 9,  
-        ['R'] * 9,  
-        ['B'] * 9,  
-        ['Y'] * 9   
-    ]
+
 def print_cube(cube):
     
     for i in [0, 3, 6]:
@@ -66,7 +58,7 @@ def apply_sequence(cube, sequence):
         apply_move(cube, move)
 
 def main():
-    cube = init_cube()
+    cube = moves.init_cube()
 
     while True:
         print_cube(cube)
