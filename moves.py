@@ -22,7 +22,7 @@ def rotate_face_anticlockwise(face_arr):
         face_arr[0], face_arr[3], face_arr[6]  # 3rd row
     ]
 
-def turn_R(cube) :
+def turn_R(cube):
 
     cube[3] = rotate_face_clockwise(cube[3]) # Right face rotated
     
@@ -51,7 +51,7 @@ def turn_R(cube) :
 
     return cube
 
-def turn_R_prime(cube) :
+def turn_R_prime(cube):
 
     cube[3] = rotate_face_anticlockwise(cube[3]) # Right face rotated
 
@@ -80,7 +80,7 @@ def turn_R_prime(cube) :
 
     return cube
 
-def turn_U(cube) :
+def turn_U(cube):
 
     cube[0] = rotate_face_clockwise(cube[0]) # Up face rotated
 
@@ -109,7 +109,7 @@ def turn_U(cube) :
 
     return cube
 
-def turn_U_prime(cube) :
+def turn_U_prime(cube):
 
     cube[0] = rotate_face_anticlockwise(cube[0]) # Up face rotated
 
@@ -138,7 +138,7 @@ def turn_U_prime(cube) :
 
     return cube
 
-def turn_L(cube) :
+def turn_L(cube):
 
     cube[1] = rotate_face_clockwise(cube[1]) # Left face rotated
 
@@ -167,7 +167,7 @@ def turn_L(cube) :
 
     return cube
 
-def turn_L_prime(cube) :
+def turn_L_prime(cube):
 
     cube[1] = rotate_face_anticlockwise(cube[1]) # Left face rotated
 
@@ -196,7 +196,7 @@ def turn_L_prime(cube) :
 
     return cube
 
-def turn_D(cube) :
+def turn_D(cube):
 
     cube[5] = rotate_face_clockwise(cube[5]) # Down face rotated
 
@@ -225,7 +225,7 @@ def turn_D(cube) :
 
     return cube
 
-def turn_D_prime(cube) :
+def turn_D_prime(cube):
 
     cube[5] = rotate_face_anticlockwise(cube[5]) # Down face rotated
 
@@ -254,7 +254,7 @@ def turn_D_prime(cube) :
 
     return cube
  
-def turn_F(cube) :
+def turn_F(cube):
 
     cube[2] = rotate_face_clockwise(cube[2]) # Front face rotated
 
@@ -283,7 +283,7 @@ def turn_F(cube) :
 
     return cube
 
-def turn_F_prime(cube) :
+def turn_F_prime(cube):
 
     cube[2] = rotate_face_anticlockwise(cube[2]) # Front face rotated
 
@@ -312,7 +312,7 @@ def turn_F_prime(cube) :
 
     return cube
 
-def turn_B(cube) :
+def turn_B(cube):
 
     cube[4] = rotate_face_clockwise(cube[4]) # Back face rotated
 
@@ -341,7 +341,7 @@ def turn_B(cube) :
 
     return cube
 
-def turn_B_prime(cube) :
+def turn_B_prime(cube):
 
     cube[4] = rotate_face_anticlockwise(cube[4]) # Back face rotated
 
@@ -370,7 +370,7 @@ def turn_B_prime(cube) :
 
     return cube
 
-def find_edge(cube, color1, color2) :
+def find_edge(cube, color1, color2):
 
     edge_pairs = [
         # Top layer
