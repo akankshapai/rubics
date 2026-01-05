@@ -17,6 +17,19 @@ color_map = {
 move_count = 0
 counter_text = Text(text = 'Moves : 0', position = (-0.8, 0.45), scale = 2, color = color.white)
 
+def solve_cube():
+    # Placeholder code
+    print("Solver module not connected yet!")
+
+# Auto-Solver button    
+solve_b = Button(
+    text='AUTO SOLVE', 
+    color=color.azure, 
+    position=(0.7, -0.4), 
+    scale=(0.2, 0.05), 
+    on_click=solve_cube
+)
+
 visual_faces = []
 
 def create_face(rotation_deg):
