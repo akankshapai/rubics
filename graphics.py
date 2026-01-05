@@ -70,6 +70,13 @@ def input(key):
     if key == 's':
         moves.scramble(logic_cube, 20)
         update_visuals()
+    
+    if key == 't':
+        print("Resetting cube...")
+        fresh_cube = moves.init_cube()
+        for i in range(6):
+            logic_cube[i] = fresh_cube[i]
+        update_visuals()
 
     move_map = {
         'r': moves.turn_R,
