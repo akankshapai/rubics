@@ -14,6 +14,9 @@ color_map = {
     'R' : color.red, 'B' : color.blue, 'Y' : color.yellow
 }
 
+move_count = 0
+counter_text = Text(text = 'Moves : 0', position = (-0.8, 0.45), scale = 2, color = color.white)
+
 visual_faces = []
 
 def create_face(rotation_deg):
@@ -52,6 +55,7 @@ create_face((0, 180, 0))
 create_face((-90, 0, 0))
 
 def update_visuals():
+    global move_count
     for face_index in range(6):
         face = logic_cube[face_index] # Get face from initialised cube
         _3d_element_list = visual_faces[face_index]
@@ -61,17 +65,22 @@ def update_visuals():
             if color_code in color_map:
                 _3d_element_list[i].color = color_map[color_code]
 
+    counter_text.text = f"Moves: {move_count}"
+
 update_visuals()
 
 def input(key):
+    global move_count
     if key == 'q':
         app.quit()
 
     if key == 's':
+        move_count = 0
         moves.scramble(logic_cube, 20)
         update_visuals()
     
     if key == 't':
+        move_count = 0
         print("Resetting cube...")
         fresh_cube = moves.init_cube()
         for i in range(6):
@@ -98,6 +107,7 @@ def input(key):
 
     if held_keys['shift']:
         if key in prime_map:
+            move_count += 1
             prime_map[key](logic_cube)
 
             print(f"Turned {key.upper()}'")
@@ -105,6 +115,7 @@ def input(key):
             update_visuals()
     
     elif key in move_map:
+        move_count += 1
         move_map[key](logic_cube)
 
         print(f"Turned {key.upper()}")
