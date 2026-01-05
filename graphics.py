@@ -3,7 +3,7 @@ import moves
 
 app = Ursina()
 window.color = color.black
-EditorCamera()  # Allows rotation with right-click drag
+EditorCamera(move_speed = 0)  # Allows rotation with right-click drag
 camera.world_position = (0, 0, -10)
 camera.look_at((0,0,0))
 
@@ -34,22 +34,22 @@ def create_face(rotation_deg):
     visual_faces.append(temp_face)
 
 # 0 : Up face
-create_face((-90, 0, 0))
+create_face((90, 0, 0))
 
 # 1 : Left face
-create_face((0, -90, 0))
+create_face((0, 90, 0))
 
 # 2 : Front face
 create_face((0, 0, 0))
 
 # 3 : Right face
-create_face((0, 90, 0))
+create_face((0, -90, 0))
 
 # 4 : Back face
 create_face((0, 180, 0))
 
 # 5 : Down face
-create_face((90, 0, 0))
+create_face((-90, 0, 0))
 
 def update_visuals():
     for face_index in range(6):
