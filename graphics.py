@@ -70,7 +70,9 @@ def update_visuals():
 update_visuals()
 
 def input(key):
+    s = Audio('sounds/meow.mp3', autoplay=False) # Prepare audio 
     global move_count
+
     if key == 'q':
         app.quit()
 
@@ -109,7 +111,7 @@ def input(key):
         if key in prime_map:
             move_count += 1
             prime_map[key](logic_cube)
-
+            s.play()
             print(f"Turned {key.upper()}'")
             # Update 3D graphics
             update_visuals()
@@ -117,7 +119,7 @@ def input(key):
     elif key in move_map:
         move_count += 1
         move_map[key](logic_cube)
-
+        s.play()
         print(f"Turned {key.upper()}")
         # Update 3D graphics
         update_visuals()
