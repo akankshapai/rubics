@@ -1,3 +1,5 @@
+import random
+
 def init_cube():
     return [
         ['W'] * 9,  
@@ -7,6 +9,31 @@ def init_cube():
         ['B'] * 9,  
         ['Y'] * 9   
     ]
+
+def scramble(cube, num_moves=20):
+
+    sequence = [] # To store moves
+
+    move_map = {
+        'R': turn_R,  "R'": turn_R_prime,
+        'L': turn_L,  "L'": turn_L_prime,
+        'U': turn_U,  "U'": turn_U_prime,
+        'D': turn_D,  "D'": turn_D_prime,
+        'F': turn_F,  "F'": turn_F_prime,
+        'B': turn_B,  "B'": turn_B_prime,
+    }
+
+    move_list = list(move_map.keys()) # List of possible moves
+
+    for _ in range(num_moves):
+        move = random.choice(move_list) # Random move
+        action_function = move_map[move]
+        action_function(cube)
+        sequence.append(move)
+
+    scramble_seq = ' '.join(sequence)
+    print(f"Scramble sequence: {scramble_seq}")
+    return scramble_seq
 
 def rotate_face_clockwise(face_arr):
     return [
@@ -22,7 +49,7 @@ def rotate_face_anticlockwise(face_arr):
         face_arr[0], face_arr[3], face_arr[6]  # 3rd row
     ]
 
-def turn_R(cube) :
+def turn_R(cube):
 
     cube[3] = rotate_face_clockwise(cube[3]) # Right face rotated
     
@@ -51,7 +78,7 @@ def turn_R(cube) :
 
     return cube
 
-def turn_R_prime(cube) :
+def turn_R_prime(cube):
 
     cube[3] = rotate_face_anticlockwise(cube[3]) # Right face rotated
 
@@ -80,7 +107,7 @@ def turn_R_prime(cube) :
 
     return cube
 
-def turn_U(cube) :
+def turn_U(cube):
 
     cube[0] = rotate_face_clockwise(cube[0]) # Up face rotated
 
@@ -109,7 +136,7 @@ def turn_U(cube) :
 
     return cube
 
-def turn_U_prime(cube) :
+def turn_U_prime(cube):
 
     cube[0] = rotate_face_anticlockwise(cube[0]) # Up face rotated
 
@@ -138,7 +165,7 @@ def turn_U_prime(cube) :
 
     return cube
 
-def turn_L(cube) :
+def turn_L(cube):
 
     cube[1] = rotate_face_clockwise(cube[1]) # Left face rotated
 
@@ -167,7 +194,7 @@ def turn_L(cube) :
 
     return cube
 
-def turn_L_prime(cube) :
+def turn_L_prime(cube):
 
     cube[1] = rotate_face_anticlockwise(cube[1]) # Left face rotated
 
@@ -196,7 +223,7 @@ def turn_L_prime(cube) :
 
     return cube
 
-def turn_D(cube) :
+def turn_D(cube):
 
     cube[5] = rotate_face_clockwise(cube[5]) # Down face rotated
 
@@ -225,7 +252,7 @@ def turn_D(cube) :
 
     return cube
 
-def turn_D_prime(cube) :
+def turn_D_prime(cube):
 
     cube[5] = rotate_face_anticlockwise(cube[5]) # Down face rotated
 
@@ -254,7 +281,7 @@ def turn_D_prime(cube) :
 
     return cube
  
-def turn_F(cube) :
+def turn_F(cube):
 
     cube[2] = rotate_face_clockwise(cube[2]) # Front face rotated
 
@@ -283,7 +310,7 @@ def turn_F(cube) :
 
     return cube
 
-def turn_F_prime(cube) :
+def turn_F_prime(cube):
 
     cube[2] = rotate_face_anticlockwise(cube[2]) # Front face rotated
 
@@ -312,7 +339,7 @@ def turn_F_prime(cube) :
 
     return cube
 
-def turn_B(cube) :
+def turn_B(cube):
 
     cube[4] = rotate_face_clockwise(cube[4]) # Back face rotated
 
@@ -341,7 +368,7 @@ def turn_B(cube) :
 
     return cube
 
-def turn_B_prime(cube) :
+def turn_B_prime(cube):
 
     cube[4] = rotate_face_anticlockwise(cube[4]) # Back face rotated
 
@@ -370,4 +397,7 @@ def turn_B_prime(cube) :
 
     return cube
 
+=======
+
+>>>>>>> 88a2744a4be0be268d5db867bdfe9c0328477be6
 
