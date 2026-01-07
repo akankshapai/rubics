@@ -1,4 +1,6 @@
 import moves
+import solver
+
 
 def print_cube(cube):
     
@@ -62,13 +64,18 @@ def main():
 
     while True:
         print_cube(cube)
-        cmd = input("Enter moves (R U R' or Q): ").strip()
+        cmd = input("Enter moves (R U R' or Q or S): ").strip()
 
         if cmd.upper() == 'Q':
             break
 
-        apply_sequence(cube, cmd)
+        elif cmd.upper() == 'S':
+            solution = solver.solve_cube(cube)
+            print("Solver:", solution)
+            apply_sequence(cube, solution)
 
+        else:
+            apply_sequence(cube, cmd)
 
 if __name__ == "__main__":
     main()
