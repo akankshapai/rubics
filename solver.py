@@ -188,3 +188,38 @@ def solve_white_corners(cube):
             apply_virtual_move(temp_cube, "U'")
 
     return " ".join(solution)
+
+def solve_second_layer(cube):
+    solution = []
+    
+    right_alg = "U R U' R' U' F' U F"
+    left_alg  = "U' L' U L U F U' F'"
+
+    for _ in range(16): # Check all edges
+        moved_something = False
+        
+        # Check Front-Up edge (Face 0, Index 7)
+        top_color = cube[0][7]
+        front_color = cube[2][1]
+        
+        if top_color != 'Y' and front_color != 'Y':
+            # This edge belongs in the middle layer!
+            
+            right_center = cube[3][4] # Right face center
+            left_center  = cube[1][4] # Left face center
+            
+            if top_color == right_center:
+                solution.append(right_alg)
+                apply_sequence_to_temp(cube, right_alg)
+                moved_something = True
+            elif top_color == left_center:
+                solution.append(left_alg)
+                apply_sequence_to_temp(cube, left_alg)
+                moved_something = True
+        
+        if not moved_something:
+            # Rotate U to check next edge
+            solution.append("U")
+            apply_virtual_move(cube, "U")
+            
+    return " ".join(solution)
