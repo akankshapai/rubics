@@ -245,3 +245,22 @@ def solve_yellow_cross(cube):
              apply_virtual_move(cube, "U")
 
     return " ".join(solution)
+
+def solve_yellow_edges(cube):
+    solution = []
+    alg = "R U R' U R U U R'"
+    
+    for _ in range(10):
+        # Check alignment , break if match
+        if cube[2][1] == cube[2][4] and cube[3][1] == cube[3][4] and \
+           cube[4][1] == cube[4][4] and cube[1][1] == cube[1][4]:
+            break
+            
+        solution.append(alg)
+        apply_sequence_to_temp(cube, alg)
+        
+        # Rotate U to try to find matches
+        solution.append("U")
+        apply_virtual_move(cube, "U")
+        
+    return " ".join(solution)
