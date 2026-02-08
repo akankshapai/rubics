@@ -264,3 +264,46 @@ def solve_yellow_edges(cube):
         apply_virtual_move(cube, "U")
         
     return " ".join(solution)
+
+def solve_yellow_corners(cube):
+    solution = []
+    
+    place_alg = "U R U' L' U R' U' L"
+    for _ in range(6):
+        solution.append(place_alg)
+        apply_sequence_to_temp(cube, place_alg)
+    
+    orient_alg = "R' D' R D" # Check for top 4
+    
+    for i in range(4):
+        # While the top-right corner is not Yellow
+        while cube[0][8] != 'Y':
+            solution.append(orient_alg)
+            apply_sequence_to_temp(cube, orient_alg)
+        
+        # Rotate U to get next corner
+        solution.append("U")
+        apply_virtual_move(cube, "U")
+        
+    return " ".join(solution)
+
+def solve_cube_logic(cube):
+    full_solution = []
+    
+    # 1. Solve Middle Layer
+    mid_sol = solve_second_layer(cube)
+    if mid_sol: full_solution.append(mid_sol)
+    
+    # 2. Solve Yellow Cross
+    cross_sol = solve_yellow_cross(cube)
+    if cross_sol: full_solution.append(cross_sol)
+    
+    # 3. Solve Yellow Edges
+    edge_sol = solve_yellow_edges(cube)
+    if edge_sol: full_solution.append(edge_sol)
+    
+    # 4. Solve Yellow Corners
+    corner_sol = solve_yellow_corners(cube)
+    if corner_sol: full_solution.append(corner_sol)
+    
+    return " ".join(full_solution)
