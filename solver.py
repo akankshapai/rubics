@@ -223,3 +223,25 @@ def solve_second_layer(cube):
             apply_virtual_move(cube, "U")
             
     return " ".join(solution)
+
+def solve_yellow_cross(cube):
+    solution = []
+    alg = "F R U R' U' F'"
+    
+    for _ in range(10):
+        # Check Top Face (0) edges: 1, 3, 5, 7
+        e1, e2, e3, e4 = cube[0][7], cube[0][5], cube[0][1], cube[0][3]
+        yellows = sum(1 for c in [e1, e2, e3, e4] if c == 'Y')
+        
+        if yellows == 4:
+            break # Cross solved
+        
+        solution.append(alg)
+        apply_sequence_to_temp(cube, alg)
+        
+        # Check if we need to rotate U to find the pattern
+        if yellows < 4:
+             solution.append("U")
+             apply_virtual_move(cube, "U")
+
+    return " ".join(solution)
