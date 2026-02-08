@@ -396,8 +396,3 @@ def turn_B_prime(cube):
     cube[3][8] = temp[2]
 
     return cube
-
-=======
-
->>>>>>> 88a2744a4be0be268d5db867bdfe9c0328477be6
-
